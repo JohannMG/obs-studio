@@ -72,6 +72,10 @@ EXPORT uint64_t config_get_uint(config_t *config, const char *section,
 				const char *name);
 EXPORT bool config_get_bool(config_t *config, const char *section,
 			    const char *name);
+EXPORT bool config_get_bool_or_default_value(config_t *config,
+					     const char *section,
+					     const char *name,
+					     bool defaultValue);
 EXPORT double config_get_double(config_t *config, const char *section,
 				const char *name);
 

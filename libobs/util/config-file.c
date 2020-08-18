@@ -733,6 +733,7 @@ uint64_t config_get_uint(config_t *config, const char *section,
 	return 0;
 }
 
+// If value doesn't exist returns false
 bool config_get_bool(config_t *config, const char *section, const char *name)
 {
 	const char *value = config_get_string(config, section, name);
@@ -740,6 +741,17 @@ bool config_get_bool(config_t *config, const char *section, const char *name)
 		return astrcmpi(value, "true") == 0 || !!str_to_uint64(value);
 
 	return false;
+}
+
+// If value doesn't exist, returns passed in value
+bool config_get_bool_or_default_value(config_t *config, const char *section,
+				      const char *name, bool defaultValue)
+{
+	const char *value = config_get_string(config, section, name);
+	if (value)
+		return astrcmpi(value, "true") == 0 || !!str_to_uint64(value);
+
+	return defaultValue;
 }
 
 double config_get_double(config_t *config, const char *section,

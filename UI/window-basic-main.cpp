@@ -1283,6 +1283,8 @@ bool OBSBasic::InitBasicConfigDefaults()
 	config_set_default_uint(basicConfig, "SimpleOutput", "ABitrate", 160);
 	config_set_default_bool(basicConfig, "SimpleOutput", "UseAdvanced",
 				false);
+	config_set_default_bool(basicConfig, "SimpleOutput",
+				"StreamWizardOptIn", true);
 	config_set_default_bool(basicConfig, "SimpleOutput", "EnforceBitrate",
 				true);
 	config_set_default_string(basicConfig, "SimpleOutput", "Preset",

@@ -118,6 +118,10 @@ void OBSBasicSettings::LoadStream1Settings()
 		ui->twitchAddonDropdown->setCurrentIndex(idx);
 	}
 
+	bool useStreamWizard = config_get_bool_or_default_value(
+		main->Config(), "SimpleOutput", "StreamWizardOptIn", true);
+	ui->streamWizardCheck->setChecked(useStreamWizard);
+
 	UpdateServerList();
 
 	if (strcmp(type, "rtmp_common") == 0) {
@@ -177,6 +181,11 @@ void OBSBasicSettings::SaveStream1Settings()
 		}
 	}
 
+	obs_data_set_bool(settings, "bwtest",
+			  ui->bandwidthTestEnable->isChecked());
+	config_set_bool(main->Config(), "SimpleOutput", "StreamWizardOptIn",
+			ui->streamWizardCheck->isChecked());
+
 	if (!!auth && strcmp(auth->service(), "Twitch") == 0) {
 		bool choiceExists = config_has_user_value(
 			main->Config(), "Twitch", "AddonChoice");
@@ -217,6 +226,7 @@ void OBSBasicSettings::UpdateKeyLink()
 	QString serviceName = ui->service->currentText();
 	QString customServer = ui->customServer->text();
 	QString streamKeyLink;
+	bool hasStreamWizard = false;
 	if (serviceName == "Twitch") {
 		streamKeyLink =
 			"https://www.twitch.tv/broadcast/dashboard/streamkey";
@@ -229,6 +239,7 @@ void OBSBasicSettings::UpdateKeyLink()
 		   (customServer.contains("fbcdn.net") && IsCustomService())) {
 		streamKeyLink =
 			"https://www.facebook.com/live/producer?ref=OBS";
+		hasStreamWizard = true;
 	} else if (serviceName.startsWith("Twitter")) {
 		streamKeyLink = "https://www.pscp.tv/account/producer";
 	} else if (serviceName.startsWith("YouStreamer")) {
@@ -243,6 +254,9 @@ void OBSBasicSettings::UpdateKeyLink()
 		ui->getStreamKeyButton->setTargetUrl(QUrl(streamKeyLink));
 		ui->getStreamKeyButton->show();
 	}
+
+	ui->streamWizardCheck->setHidden(!hasStreamWizard);
+	ui->settingWizardBtn->setHidden(!hasStreamWizard);
 }
 
 void OBSBasicSettings::LoadServices(bool showAll)

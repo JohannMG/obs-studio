@@ -151,8 +151,8 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>806</width>
-              <height>1254</height>
+              <width>810</width>
+              <height>1087</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_19">
@@ -1214,6 +1214,40 @@
                </property>
               </widget>
              </item>
+             <item row="10" column="1">
+              <widget class="QCheckBox" name="streamWizardCheck">
+               <property name="text">
+                <string>Basic.Settings.Stream.PreLiveWizard.OptIn</string>
+               </property>
+               <property name="checked">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="11" column="1">
+              <layout class="QHBoxLayout" name="liveSettingWizardCheck">
+               <item>
+                <widget class="QPushButton" name="settingWizardBtn">
+                 <property name="text">
+                  <string>Basic.Settings.Stream.PreLiveWizard.RunNow</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_27">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </item>
             </layout>
            </widget>
           </widget>
@@ -1250,8 +1284,8 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>813</width>
-              <height>761</height>
+              <width>739</width>
+              <height>767</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_21">
@@ -2382,7 +2416,7 @@
                                  <rect>
                                   <x>9</x>
                                   <y>0</y>
-                                  <width>236</width>
+                                  <width>250</width>
                                   <height>25</height>
                                  </rect>
                                 </property>
@@ -3745,8 +3779,8 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>767</width>
-              <height>582</height>
+              <width>696</width>
+              <height>601</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_50">
@@ -4601,8 +4635,8 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>791</width>
-              <height>970</height>
+              <width>769</width>
+              <height>930</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_23">
