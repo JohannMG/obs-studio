@@ -35,6 +35,8 @@
 #include "window-basic-about.hpp"
 #include "auth-base.hpp"
 #include "log-viewer.hpp"
+#include "bss-stream-setting-model.hpp"
+#include "bss-url-config.hpp"
 
 #include <obs-frontend-internal.hpp>
 
@@ -286,6 +288,7 @@ private:
 
 	QScopedPointer<QThread> patronJsonThread;
 	std::string patronJson;
+	QPointer<BssUrlConfig> bssUrlConfig;
 
 	void UpdateMultiviewProjectorMenu();
 
@@ -1001,6 +1004,8 @@ private slots:
 	void StackedMixerAreaContextMenuRequested();
 
 	void ResizeOutputSizeOfSource();
+
+	void NewRemoteStreamingSettings(StreamSettingModel newModel);
 
 public slots:
 	void on_actionResetTransform_triggered();

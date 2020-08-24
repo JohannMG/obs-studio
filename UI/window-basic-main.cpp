@@ -1110,6 +1110,14 @@ retryScene:
 		api->on_event(OBS_FRONTEND_EVENT_SCENE_CHANGED);
 		api->on_event(OBS_FRONTEND_EVENT_PREVIEW_SCENE_CHANGED);
 	}
+
+	bssUrlConfig = new BssUrlConfig;
+	connect(bssUrlConfig, &BssUrlConfig::newStreamSetting, this, &OBSBasic::NewRemoteStreamingSettings);
+	if (!opt_bss_config.empty()) {
+		QString configUrl = QString::fromStdString(opt_bss_config);
+		bssUrlConfig.newUrl(configUrl);
+		configUrl.clear();
+	}
 }
 
 #define SERVICE_PATH "service.json"
@@ -7936,6 +7944,34 @@ void OBSBasic::ResizeOutputSizeOfSource()
 
 	ResetVideo();
 	on_actionFitToScreen_triggered();
+}
+
+void OBSBasic::NewRemoteStreamingSettings(StreamSettingModel newModel) 
+{
+	QMessageBox settingsAlert(this);
+	settingsAlert.setWindowTitle("Import Settings");	
+
+	QString alertText = QString("");
+	alertText.append("Stream Service: ");
+	alertText.append(newModel.serviceName);
+	alertText.append("\n");
+
+	alertText.append("Stream Type: ");
+	alertText.append(newModel.streamType);
+	alertText.append("\n");
+
+	alertText.append("Service Url: ");
+	alertText.append(newModel.serviceUrl.toString());
+	alertText.append("\n");
+
+	alertText.append("Stream Key: ");
+	alertText.append(newModel.streamKey);
+	alertText.append("\n");
+
+	settingsAlert.setText(alertText);
+
+	settingsAlert.exec();
+
 }
 
 QAction *OBSBasic::AddDockWidget(QDockWidget *dock)

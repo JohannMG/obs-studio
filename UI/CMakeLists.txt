@@ -253,6 +253,7 @@ set(obs_SOURCES
 	locked-checkbox.cpp
 	visibility-checkbox.cpp
 	media-slider.cpp)
+	url-open-config/bss-url-config.cpp)
 
 set(obs_HEADERS
 	${obs_PLATFORM_HEADERS}
@@ -322,7 +323,9 @@ set(obs_HEADERS
 	log-viewer.hpp
 	obs-proxy-style.hpp
 	obs-proxy-style.hpp
-	media-slider.hpp)
+	media-slider.hpp
+	url-open-config/bss-stream-setting-model.hpp
+	url-open-config/bss-url-config.hpp)
 
 set(obs_importers_HEADERS
 	importers/importers.hpp)

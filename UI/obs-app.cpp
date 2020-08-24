@@ -85,6 +85,7 @@ bool opt_disable_updater = false;
 string opt_starting_collection;
 string opt_starting_profile;
 string opt_starting_scene;
+string opt_bss_config;
 
 bool remuxAfterRecord = false;
 string remuxFilename;
@@ -2612,6 +2613,10 @@ int main(int argc, char *argv[])
 		} else if (arg_is(argv[i], "--allow-opengl", nullptr)) {
 			opt_allow_opengl = true;
 
+		} else if (arg_is(argv[i], "--bss-config", "-b")) {
+			if (++i < argc)
+				opt_bss_config = argv[i];
+			
 		} else if (arg_is(argv[i], "--disable-updater", nullptr)) {
 			opt_disable_updater = true;
 
