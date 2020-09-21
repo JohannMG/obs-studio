@@ -269,6 +269,8 @@ set(obs_HEADERS
 	pre-stream-wizard/pre-stream-wizard.hpp
 	pre-stream-wizard/page-input-display.hpp
 	pre-stream-wizard/page-start-prompt.hpp
+	pre-stream-wizard/encoder-settings-provider-abstract.hpp
+	pre-stream-wizard/encoder-settings-provider-facebook.hpp
 	obs-app.hpp
 	platform.hpp
 	window-dock.hpp

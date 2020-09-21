@@ -5,10 +5,11 @@
 #include <QLabel>
 #include <QSize>
 
+#include "obs-app.hpp"
+#include "encoder-settings-provider-facebook.hpp"
+
 #include "page-input-display.hpp"
 #include "page-start-prompt.hpp"
-
-#include "obs-app.hpp"
 
 namespace StreamWizard {
 
