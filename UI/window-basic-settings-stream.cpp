@@ -249,6 +249,8 @@ void OBSBasicSettings::UpdateKeyLink()
 		ui->getStreamKeyButton->setTargetUrl(QUrl(streamKeyLink));
 		ui->getStreamKeyButton->show();
 	}
+
+	hasStreamWizard &= ui->outputMode->currentText().contains("Simple");
 	ui->settingWizardBtn->setHidden(!hasStreamWizard);
 }
 
@@ -266,6 +268,9 @@ void OBSBasicSettings::preStreamWizardLaunch()
 		     "Showed wizard button for service not supported");
 		return;
 	}
+
+	// Save any changes so far since we'll refrence them from config files
+	SaveSettings();
 
 	QSharedPointer<StreamWizard::EncoderSettingsRequest> currentSettings =
 		StreamingSettingsUtility::makeEncoderSettingsFromCurrentState(
@@ -287,10 +292,11 @@ void OBSBasicSettings::preStreamWizardApplySettings(
 {
 	blog(LOG_INFO, "OBSBasicSettings::preStreamWizardApplySettings");
 
-	// Apply and reload
+	// Apply
 	StreamingSettingsUtility::applyWizardSettings(newSettings,
 						      main->Config());
 
+	// Reload
 	LoadSettings(false);
 }
 
